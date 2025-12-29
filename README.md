@@ -1,58 +1,67 @@
-## SalesDash – Retail Sales Forecasting Dashboard
+# SalesDash – Retail Sales Forecasting Dashboard
 
 **Author:** Podmaraj Boruah
 **Project Type:** Machine Learning · Time Series Forecasting · Data Visualization
 **Created On:** 28 December 2025
 
+---
+
 ## Project Overview
 
-**SalesDash** is an end-to-end **retail sales forecasting system** built using Python and Streamlit.
-The project focuses on predicting **future retail sales trends** using **time-series models** and presenting insights through a **professionally designed interactive dashboard**.
+**SalesDash** is an end-to-end **retail sales forecasting system** built using **Python** and **Streamlit**.
+The project predicts **future retail sales trends** using **time-series forecasting models** and presents insights through a **clean, professional, and interactive dashboard**.
 
-The complete workflow—from raw data preprocessing to model evaluation and dashboard deployment—is implemented following **industry best practices**.
+The complete workflow—from **data cleaning and model comparison** to **final model deployment**—follows **industry-standard ML practices**.
+
+---
 
 ## Problem Statement
 
-Retail businesses require accurate sales forecasting to:
+Retail businesses need accurate sales forecasts to:
 
 * Optimize inventory planning
 * Reduce overstock and stockouts
-* Support data-driven decision-making
+* Improve supply chain efficiency
+* Enable data-driven decision-making
 
-This project solves the problem by learning temporal patterns from historical retail sales data and forecasting future demand.
+SalesDash addresses this by learning temporal patterns from historical retail sales data and forecasting future demand.
+
+---
 
 ## Models Evaluated
 
-Three time-series forecasting models were implemented and tested:
+Three time-series forecasting models were implemented and evaluated:
 
-| Model       | Purpose                            |
-| ----------- | ---------------------------------- |
-| **ARIMA**   | Captures trend & autocorrelation   |
-| **SARIMA**  | Handles seasonality explicitly     |
-| **Prophet** | Flexible trend + seasonality model |
+| Model       | Description                             |
+| ----------- | --------------------------------------- |
+| **ARIMA**   | Captures trend and autocorrelation      |
+| **SARIMA**  | Explicitly models seasonality           |
+| **Prophet** | Flexible trend and seasonality modeling |
 
-###  Model Selection Strategy
+### Model Evaluation Strategy
 
-* **Train–test split** (last 30 days as test set)
-* **Evaluation metric:** RMSE
-* All models were trained and evaluated under identical conditions
+* Train–test split (last **30 days** used as test set)
+* Evaluation metric: **RMSE (Root Mean Squared Error)**
+* All models trained and tested under identical conditions
 
-###  Best Model
+### Best Model Selection
 
-➡ **ARIMA** achieved the **lowest RMSE** and was selected for final deployment.
+**ARIMA** achieved the **lowest RMSE** and was selected for final deployment.
 
-##  Tech Stack
+---
+
+## Tech Stack
 
 ### Programming & Frameworks
 
 * **Python 3.x**
-* **Streamlit** – interactive web dashboard
+* **Streamlit** – interactive dashboard framework
 
 ### Data Science & Time Series
 
 * **Pandas** – data manipulation
 * **NumPy** – numerical operations
-* **Matplotlib** – data visualization
+* **Matplotlib** – visualizations
 * **Statsmodels** – ARIMA & SARIMA
 * **Prophet** – advanced forecasting
 * **Scikit-learn** – model evaluation
@@ -62,96 +71,98 @@ Three time-series forecasting models were implemented and tested:
 
 * **uv** – fast Python dependency & virtual environment manager
 
-### Frontend Styling
-
-* **Custom CSS** (`streamlit/assets/style.css`)
 ---
 
-## 📂 Project Folder Structure
+## Project Folder Structure
 
 ```
-SalesDash/
+Future_ML_01/
 │
-├── data/
-│   └── retail_store_inventory.csv      # Raw dataset (Kaggle)
+├── app.py                          # Streamlit dashboard application
+├── test.py                         # Data cleaning, EDA & model comparison
+├── trained.py                      # Final ARIMA training & forecast generation
+├── main.py                         # Reserved / placeholder
 │
-├── streamlit/
-│   ├── app.py                          # Streamlit dashboard
-│   ├── cleaned_retail_sales.csv        # Cleaned daily sales data
-│   ├── forecast_retail_sales_arima.csv # ARIMA forecast output
-│   ├── arima_model.pkl                 # Trained ARIMA model
-│   └── assets/
-│       └── style.css                   # Custom UI styling
+├── cleaned_retail_sales.csv        # Cleaned daily sales dataset
+├── forecast_retail_sales_arima.csv # 30-day ARIMA forecast output
+├── arima_model.pkl                 # Trained ARIMA model
 │
-├── test.py                             # Data cleaning, EDA & model comparison
-├── trained.py                          # Final ARIMA training & saving
-├── main.py                             # Reserved / placeholder
-└── README.md                           # Project documentation
+├── requirements.txt                # Project dependencies
+├── pyproject.toml                  # uv environment configuration
+└── README.md                       # Project documentation
 ```
-## 🔄 Project Workflow
+
+---
+
+## Project Workflow
 
 ### 1️⃣ Data Cleaning & Model Comparison (`test.py`)
 
-* Raw data ingestion
+* Load raw retail sales data
 * Column standardization
-* Date parsing & validation
+* Date parsing and validation
 * Missing value handling
 * Daily sales aggregation
-* Training & evaluation of:
+* Model training and evaluation:
 
   * ARIMA
   * SARIMA
   * Prophet
 * RMSE-based model comparison
 
+---
+
 ### 2️⃣ Final Model Training (`trained.py`)
 
-* Train ARIMA on full cleaned dataset
+* Train ARIMA model on full cleaned dataset
 * Generate **30-day sales forecast**
-* Compute confidence intervals
-* Save:
+* Calculate **95% confidence intervals**
+* Save outputs:
 
   * Cleaned dataset
-  * Forecast CSV
-  * Trained ARIMA model (`.pkl`)
-* All outputs stored inside the `streamlit/` directory for deployment
+  * Forecast CSV file
+  * Serialized ARIMA model (`.pkl`)
 
-### 3️⃣ Dashboard Deployment (`streamlit/app.py`)
+---
 
-The Streamlit dashboard includes:
+### 3️⃣ Dashboard Deployment (`app.py`)
 
-## 📌 KPI Metrics
+The Streamlit dashboard provides:
+
+#### KPI Metrics
 
 * Total Sales
 * Average Daily Sales
 * Peak Sales Value
 
-## Visualizations
+#### Visualizations
 
 1. Historical Sales Trend
 2. Historical vs 30-Day Forecast
-3. Zoomed-In View (Recent Sales + Forecast)
+3. Recent Sales with Forecast Overlay
 
-## Forecast Table
+#### Forecast Table
 
 * Clean tabular forecast output
-* Enhanced readability with larger fonts
-* Centered alignment for clarity
+* Improved readability
+* Center-aligned values
 
-## UI Enhancements
+#### UI Enhancements
 
 * Custom CSS styling
 * Professional typography
 * Responsive layout
-* High-quality, compact visualizations
+* Compact, high-quality charts
 
-##  How to Run the Project
+---
 
-### Step 1: Create Environment & Install Dependencies (using `uv`)
+## How to Run the Project
+
+### Step 1: Create Environment & Install Dependencies
 
 ```bash
 uv venv
-uv pip install pandas numpy matplotlib streamlit statsmodels prophet scikit-learn joblib
+uv pip install -r requirements.txt
 ```
 
 ### Step 2: Train Model & Generate Forecast
@@ -160,30 +171,36 @@ uv pip install pandas numpy matplotlib streamlit statsmodels prophet scikit-lear
 python trained.py
 ```
 
-### Step 3: Launch Dashboard
+### Step 3: Launch Streamlit Dashboard
 
 ```bash
-streamlit run streamlit/app.py
+streamlit run app.py
 ```
 
 ---
 
 ## Forecast Details
 
-* Forecast Horizon: **30 Days**
-* Frequency: **Daily**
-* Confidence Interval: **95%**
-* Final Model: **ARIMA**
+* **Forecast Horizon:** 30 Days
+* **Frequency:** Daily
+* **Confidence Interval:** 95%
+* **Final Model:** ARIMA
 
-##  Conclusion
+---
+
+## Conclusion
 
 This project demonstrates:
 
 * End-to-end time-series forecasting
-* Model evaluation and selection
-* Clean ML pipeline design
-* Real-world dashboard deployment
+* Data cleaning and feature preparation
+* Model comparison and selection
+* Production-ready ML pipeline
+* Interactive dashboard deployment
 * Professional project organization
-##  Author
+
+---
+
+## Author
 
 **Podmaraj Boruah**
